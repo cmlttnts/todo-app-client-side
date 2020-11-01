@@ -1,8 +1,12 @@
 import reducer from "context/reducer";
 import { getAppData } from "localStorageUtils";
 import React, { createContext, useReducer } from "react";
+import { AppContextType } from "types";
 
-const AppContext = createContext(getAppData());
+const AppContext = createContext<AppContextType>({
+  appData: getAppData(),
+  appDispatch: () => null
+});
 export default AppContext;
 
 export const AppContextProvider: React.FC = ({ children }) => {

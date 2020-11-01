@@ -1,11 +1,11 @@
 import { AppDataType } from "types";
 
-export function getAppData() {
+export function getAppData(): AppDataType {
   const data = localStorage.getItem("appData");
   if (data != null) {
     return JSON.parse(data);
   }
-  return null;
+  return { tabs: [] };
 }
 
 export function setAppData(appData: AppDataType) {

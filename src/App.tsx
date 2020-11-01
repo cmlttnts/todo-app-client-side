@@ -3,13 +3,13 @@ import MainContainer from "components/MainContainer/MainContainer";
 import React from "react";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Header />
       <MainContainer />
     </div>
   );
-}
+};
 
-export default App;
+export default React.memo(App);

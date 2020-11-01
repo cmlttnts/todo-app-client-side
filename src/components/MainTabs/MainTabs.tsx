@@ -1,16 +1,21 @@
 import styled from "@emotion/styled";
+import AddTabButton from "components/Buttons/AddTabButton";
+import TabButton from "components/Buttons/TabButton";
 import React from "react";
 
 type Props = {
-  tabNames: Array<string>;
+  tabNames: string[];
+  activeTabName: string;
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const MainTabs = ({ tabNames }: Props) => {
+const MainTabs = ({ tabNames, activeTabName, setActiveTab }: Props) => {
   return (
     <MainTabsS className="MainTabs">
       {tabNames.map(tn => (
-        <button>{tn}</button>
+        <TabButton onClick={() => setActiveTab(tn)} text={tn} isActive={tn === activeTabName} />
       ))}
+      <AddTabButton />
     </MainTabsS>
   );
 };

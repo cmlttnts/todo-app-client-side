@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import React from "react";
 import { TabType } from "types";
 
@@ -9,7 +10,11 @@ const TabContainer = ({ tab }: Props) => {
   if (!tab) {
     return null;
   }
-  return <div className="TabContainer">{tab.todos}</div>;
+  return <TabS>{tab.todos}</TabS>;
 };
 
 export default TabContainer;
+
+const TabS = styled.div`
+  width: 100vw;
+`;

@@ -5,7 +5,8 @@ export const ACTION_TYPES = {
   deleteTab: "DELETE_TAB",
   renameTab: "RENAME_TAB", // TODO: implement
   addTodo: "ADD_TODO",
-  deleteTodo: "DELETE_TODO"
+  deleteTodo: "DELETE_TODO",
+  deleteAllTabs: "DELETE_ALL_TABS"
 };
 
 export function addTab(tabName: string): TabActionType {

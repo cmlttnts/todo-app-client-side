@@ -13,7 +13,12 @@ const MainTabs = ({ tabNames, activeTabName, setActiveTab }: Props) => {
   return (
     <MainTabsS className="MainTabs">
       {tabNames.map(tn => (
-        <TabButton onClick={() => setActiveTab(tn)} text={tn} isActive={tn === activeTabName} />
+        <TabButton
+          onClick={() => setActiveTab(tn)}
+          text={tn}
+          isActive={tn === activeTabName}
+          key={tn}
+        />
       ))}
       <AddTabButton />
     </MainTabsS>
@@ -26,4 +31,7 @@ const MainTabsS = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
 `;

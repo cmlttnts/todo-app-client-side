@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import AddTabButton from "components/Buttons/AddTabButton";
 import TabButton from "components/Buttons/TabButton";
-import React from "react";
+import AddTabModal from "components/Modals/AddTabModal";
+import PortalModal from "components/Modals/PortalModal";
+import React, { useState } from "react";
 
 type Props = {
   tabNames: string[];
@@ -10,6 +12,7 @@ type Props = {
 };
 
 const MainTabs = ({ tabNames, activeTabName, setActiveTab }: Props) => {
+  const [showAddTabModal, setShowAddTabModal] = useState(false);
   return (
     <MainTabsS className="MainTabs">
       {tabNames.map(tn => (
@@ -20,7 +23,18 @@ const MainTabs = ({ tabNames, activeTabName, setActiveTab }: Props) => {
           key={tn}
         />
       ))}
-      <AddTabButton />
+      <AddTabButton
+        onClick={() => {
+          setShowAddTabModal(true);
+        }}
+      />
+      <PortalModal active={showAddTabModal}>
+        <AddTabModal
+          onCancel={() => {
+            setShowAddTabModal(false);
+          }}
+        />
+      </PortalModal>
     </MainTabsS>
   );
 };

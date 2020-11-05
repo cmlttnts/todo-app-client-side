@@ -5,8 +5,6 @@ import React, { useContext, useState } from "react";
 
 const MainContainer = () => {
   const { appData } = useContext(AppContext);
-  console.log("MainContainer - appData");
-  console.dir(appData);
   const [activeTab, setActiveTab] = useState<string>(appData.tabs[0]?.name || "");
 
   return (

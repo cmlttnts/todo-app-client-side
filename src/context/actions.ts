@@ -1,4 +1,4 @@
-import { TabActionType, TodoActionType, TodoType } from "types";
+import { DeleteAllActionType, TabActionType, TodoActionType, TodoType } from "types";
 
 export const ACTION_TYPES = {
   addTab: "ADD_TAB",
@@ -21,6 +21,14 @@ export function deleteTab(tabName: string): TabActionType {
     payload: tabName
   };
 }
+
+// export function renameTab(tabName: string) {
+//   return {
+//     type: ACTION_TYPES.renameTab,
+//     payload: tabName
+//   };
+// }
+
 export function addTodo(parentTabName: string, todo: TodoType): TodoActionType {
   return {
     type: ACTION_TYPES.addTab,
@@ -31,5 +39,12 @@ export function deleteTodo(parentTabName: string, todo: TodoType): TodoActionTyp
   return {
     type: ACTION_TYPES.addTab,
     payload: { parentTabName, todo }
+  };
+}
+
+export function deleteAllTabs(): DeleteAllActionType {
+  return {
+    type: ACTION_TYPES.deleteAllTabs,
+    payload: null
   };
 }

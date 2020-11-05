@@ -1,22 +1,15 @@
 import styled from "@emotion/styled";
 import { tabButtonStyle } from "components/Buttons/buttonsUtils";
-import { addTab } from "context/actions";
-import AppContext from "context/appContext";
-import React, { useContext } from "react";
+import React from "react";
 import { BsPlusSquareFill } from "react-icons/bs";
 
-let counter = 1;
+type Props = {
+  onClick: () => void;
+};
 
-const AddTabButton = () => {
-  const { appDispatch } = useContext(AppContext);
-
+const AddTabButton = ({ onClick }: Props) => {
   return (
-    <AddTabButtonS
-      onClick={() => {
-        console.log(counter);
-
-        appDispatch(addTab(`Tab${counter++}`));
-      }}>
+    <AddTabButtonS onClick={onClick}>
       <BsPlusSquareFill /> Add
     </AddTabButtonS>
   );

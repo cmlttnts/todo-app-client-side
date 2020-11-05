@@ -1,9 +1,17 @@
 import { ACTION_TYPES } from "context/actions";
-import { setAppData } from "localStorageUtils";
+import { resetData, setAppData } from "localStorageUtils";
 import clonedeep from "lodash.clonedeep";
-import { AppDataType, isTabAction, isTodoAction, TabActionType, TodoActionType } from "types";
+import {
+  ActionType,
+  AppDataType,
+  isDeleteAllAction,
+  isTabAction,
+  isTodoAction,
+  TabActionType
+} from "types";
 
-function reducer(state: AppDataType, action: TabActionType | TodoActionType) {
+function reducer(state: AppDataType, action: ActionType) {
+  console.log("state, action");
   console.log(state, action);
 
   let newState;
@@ -17,7 +25,6 @@ function reducer(state: AppDataType, action: TabActionType | TodoActionType) {
         };
         newState.tabs.push(newTab);
         setAppData(newState);
-        console.log(newState);
         return newState;
       }
       break;
@@ -55,10 +62,17 @@ function reducer(state: AppDataType, action: TabActionType | TodoActionType) {
         return newState;
       }
       break;
+    case ACTION_TYPES.deleteAllTabs:
+      if (isDeleteAllAction(action)) {
+        newState = resetData();
+        return newState;
+      }
+      break;
     default:
-      console.log("Something is wrong, default state case!");
+      console.log("!!! DEFAULT state case!");
       return state;
   }
+  console.log("!!! OUTSIDE SWITCH!");
   return state;
 }
 
